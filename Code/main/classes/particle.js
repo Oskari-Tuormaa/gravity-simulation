@@ -1,16 +1,17 @@
 class Particle {
-	constructor(m, r, x, y, xs, ys) {
+	constructor(m, x, y, xs, ys) {
 		this.mass = m;
-		this.radius = r;
 		this.pos = createVector(x, y, 0);
 		this.vel = createVector(xs, ys, 0);
 		this.acc = createVector(0, 0, 0);
+		this.radius = 10;
 		this.wrapAround = false;
 	}
 
 	// Draw particles to canvas
 	show() {
 		push();
+		noStroke();
 		translate(this.pos.x, this.pos.y);
 		ellipse(0, 0, this.radius * 2, this.radius * 2);
 		pop();
@@ -31,6 +32,6 @@ class Particle {
 
 	// Adds force f to particle acceleration
 	addForce(f) {
-		this.acc.add(f);
+		this.acc.add(f.div(this.mass));
 	}
 }
