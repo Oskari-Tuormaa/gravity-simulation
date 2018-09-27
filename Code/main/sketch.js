@@ -3,7 +3,8 @@ var world;
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 
-	world = new World(0.1, 2);
+	world = new World(0.01, 2);
+
 	for (var i = 0; i < 100; i++) {
 		var newPart = new Particle(100, random(0, width), random(0, height), 0, 0);
 		newPart.wrapAround = false;
